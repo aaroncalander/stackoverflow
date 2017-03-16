@@ -16,9 +16,11 @@ gem 'bcrypt'
 gem 'hirb'
 gem 'sinatra-flash'
 
+gem 'faker'
+gem 'rspec'
+
 gem 'shotgun'
 
-group :development, :test do
-  gem 'faker'
-  gem 'rspec'
-end
+# group :development, :test do
+#   gem 'faker'
+# end
