@@ -1,7 +1,12 @@
 <header>
   <h1>something that isnt hacker news</h1>
   <h2> question: <%= @question.content %>
-    
+    <form method="post" action='/questions/<%= @question.id %>/upvote' class="inline">
+        <%= @question.upvote_total %> <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button upvote-button"></button>
+    </form>
+    <form method="post" action='/questions/<%= @question.id %>/downvote' class="inline">
+        <%= @question.downvote_total %> <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button downvote-button"></button>
+    </form>
   </h2>
 
   <ol>
@@ -28,10 +33,10 @@
    <article id="<%= answer.id %>">
       <h2><%= answer.content %>
         <form method="post" action='/answers/<%= answer.id %>/upvote' class="inline">
-            <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button upvote-button"></button>
+            <%= answer.upvote_total %> <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button upvote-button"></button>
         </form>
         <form method="post" action='/answers/<%= answer.id %>/downvote' class="inline">
-            <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button downvote-button"></button>
+            <%= answer.downvote_total %> <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button downvote-button"></button>
         </form>
       </h2>
         <ol>
