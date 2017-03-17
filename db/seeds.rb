@@ -39,19 +39,3 @@ comments_on_answers = 16.times.map do
                   :commentable => Answer.all.sample
                   )
 end
-
-
-# channels = ["Telemundo", "Unimas ", "Azteca 13", "Mexiquense",
-#  "ESPN", "Fox Sports", "NBC Sports", "Big Ten Network", "Nickelodeon"].map do |name|
-#   Channel.create!(:name            => name,
-#                   :callsign        => name[0..2].upcase,
-#                   :price_per_month => Faker::Commerce.price)
-# end
-
-# users.each do |user|
-#   user_channels = channels.sample(rand(2..4))
-#   user_channels.each do |channel|
-#     Subscription.create!(user: user,
-#                          channel: channel)
-#   end
-# end
