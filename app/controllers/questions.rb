@@ -4,6 +4,9 @@ get '/questions' do
 end
 
 post '/questions' do
-  @new_question = Question.create(content: params[:content], user_id: current_user)
+  p "*" * 30
+  p current_user
+  p "*" * 30
+  @new_question = Question.create(content: params[:content], user_id: current_user.id)
   redirect '/questions'
 end
