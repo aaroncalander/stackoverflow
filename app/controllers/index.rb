@@ -1,4 +1,4 @@
 get '/' do
   @users = User.all
-  erb :index
+  redirect '/questions'
 end

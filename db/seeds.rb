@@ -1,8 +1,8 @@
 require 'faker'
 
 User.delete_all
-# Channel.delete_all
-# Subscription.delete_all
+Question.delete_all
+
 
 users = 10.times.map do
   User.create!( :first_name => Faker::Name.first_name,
@@ -10,6 +10,36 @@ users = 10.times.map do
                 :email      => Faker::Internet.email,
                 :password   => 'password' )
 end
+
+
+
+questions = 13.times.map do
+  Question.create!( :content => Faker::Hacker.say_something_smart + "?",
+                    :user_id => rand(1..10)
+                    )
+end
+
+answers = 25.times.map do
+  Answer.create!(:content => Faker::Hipster.paragraph,
+                :user_id => rand(1..10),
+                :question => Question.all.sample
+                  )
+end
+
+comments_on_questions = 10.times.map do
+  Comment.create!(:content => Faker::Hipster.sentence,
+                  :user_id => rand(1..10),
+                  :commentable => Question.all.sample
+                  )
+end
+
+comments_on_answers = 16.times.map do
+  Comment.create!(:content => Faker::Hipster.sentence,
+                  :user_id => rand(1..10),
+                  :commentable => Answer.all.sample
+                  )
+end
+
 
 # channels = ["Telemundo", "Unimas ", "Azteca 13", "Mexiquense",
 #  "ESPN", "Fox Sports", "NBC Sports", "Big Ten Network", "Nickelodeon"].map do |name|
