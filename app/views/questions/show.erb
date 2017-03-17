@@ -1,0 +1,62 @@
+<header>
+  <h1>something that isnt hacker news</h1>
+  <h2> question: <%= @question.content %> </h2>
+
+  <ol>
+    <% @question_comments.each do |comment| %>
+
+        <li>
+          <%=comment.content%>
+        </li>
+
+    <%end%>
+  </ol>
+  <% if logged_in? %>
+    <form id="new_question_comment" method="post" action="/questions/<%= @question.id %>/comments">
+      <input type="text" name="content" placeholder="add a comment to this question">
+      <input type="submit" value="submit new comment">
+    </form>
+  <% end %>
+
+</header>
+
+<div class='answer-container'>
+  <% @question.answers.each do |answer| %>
+
+   <article id="<%= answer.id %>">
+      <h2><%= answer.content %></h2>
+        <ol>
+          <% answer.comments.each do |comment|%>
+
+              <li>
+                <%=comment.content%>
+              </li>
+
+          <%end%>
+        </ol>
+      <% if logged_in? %>
+        <form id="new_answer_comment" method="post" action="/answers/<%= answer.id %>/comments">
+          <input type="text" name="content" placeholder="add a comment to this answer">
+          <input type="submit" value="submit new comment">
+        </form>
+      <% end %>
+
+      <p>
+        <form action="questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
+          <input type="hidden" name="_method" value="delete"  />
+          <input type="submit" value="delete this answer"  />
+        </form>
+      </p>
+    </article>
+
+ <% end %>
+</div>
+
+<% if logged_in? %>
+
+<form id="new_answers" method="post" action="/questions/<%= @question.id %>/answers">
+  <input type="text" name="content" placeholder="content">
+  <input type="submit" value="submit new answer">
+</form>
+
+<% end %>
