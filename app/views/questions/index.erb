@@ -3,6 +3,7 @@
   <% @questions.each do |question|%>
   <ul>
   	<li><a href= "/questions/<%= question.id %>/answers" ><%= question.content%></a></li><br>
+    <%= User.find(question.user_id).first_name %>
   </ul>
   <%end%>
 
