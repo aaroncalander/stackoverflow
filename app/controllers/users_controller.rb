@@ -16,6 +16,7 @@ end
 get '/users/:id' do
   if logged_in?
     @user = current_user
+    @user_questions = @user.questions
     erb :'users/show'
   else
     erb :'users/new'
