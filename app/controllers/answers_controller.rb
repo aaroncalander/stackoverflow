@@ -1,11 +1,10 @@
 get "/questions/:question_id/answers" do
   @question = Question.find(params[:question_id])
+  @question_comments = @question.comments
   # @answers = Answer.find_by(question_id: (params[:question_id]))
   @answers = @question.answers
-  p @answers
-
-  p "*"*50
-    erb :'/answers/show'
+  # @answer_comments = @answers.all.comments
+    erb :'/questions/show'
 	end
 
 post "/questions/:question_id/answers" do
