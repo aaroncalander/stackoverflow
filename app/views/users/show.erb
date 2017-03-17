@@ -4,7 +4,7 @@
   <h3>Your questions:</h3>
 <ol>
   <% @user_questions.each do |question| %>
-  <li><a href="/question/<%= question.id %>"><%= question.content %></a></li> <br>
+  <li><a href="/questions/<%= question.id %>/answers"><%= question.content %></a></li> <br>
   <% end %>
 </ol>
 </div>
