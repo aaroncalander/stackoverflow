@@ -56,7 +56,7 @@
       <% end %>
 
       <p>
-        <form action="questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
+        <form action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
           <input type="hidden" name="_method" value="delete"  />
           <input type="submit" value="delete this answer"  />
         </form>

@@ -11,3 +11,10 @@ post "/questions/:question_id/answers" do
   @answer = Answer.create(content: params[:content], question_id: params[:question_id], user_id: current_user.id )
   redirect "/questions/#{@answer.question_id}/answers"
 end
+
+
+delete '/questions/:question_id/answers/:answer_id' do
+  @answer = Answer.find(params[:answer_id])
+  @answer.destroy
+  redirect "/questions/#{params[:question_id]}/answers"
+end
