@@ -1,0 +1,19 @@
+<div>
+  <h1>Welcome to My App!</h1><br>
+  <% @questions.each do |question|%>
+  <ul>
+  	<li><a href= "/questions/<%= question.id %>/answers" ><%= question.content%></a></li><br>
+    <%= User.find(question.user_id).first_name %>
+  </ul>
+  <%end%>
+
+
+  <% if logged_in? %>
+  <form action="/questions" method="POST">
+      <label for="question">Enter New Question</label>
+      <input type="text" id="content" name="content" placeholder="Your question..">
+      <input type="submit" value="Submit">
+    </form>
+  <% end %>
+
+</div>
